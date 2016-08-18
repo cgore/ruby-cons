@@ -35,6 +35,18 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+class Array
+  def to_cons
+    Cons.from_array self
+  end
+
+  class << self
+    def from_cons cons
+      cons.to_a
+    end
+  end
+end
+
 class Cons
   attr_accessor :car, :cdr
 
