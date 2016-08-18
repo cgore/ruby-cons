@@ -159,6 +159,16 @@ class Cons
     }
   end
 
+  def to_a
+    if not car or car.nil?
+      []
+    elsif not cdr or cdr.nil?
+      [car]
+    else
+      [car] + cdr.to_a
+    end
+  end
+
   class << self
     def from_array array, initial=true
       car, *cdr = array

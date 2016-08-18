@@ -101,4 +101,18 @@ describe Cons do
       expect(c.sixth).to be_nil
     end
   end
+
+  describe :to_a do
+    it "works with an empty list" do
+      expect(Cons[nil,nil].to_a).to eq []
+    end
+
+    it "works with a single cons" do
+      expect(Cons[1,nil].to_a).to eq [1]
+    end
+
+    it "works with a deep list" do
+      expect(Cons[1,Cons[2,Cons[3,Cons[4,nil]]]].to_a).to eq [1,2,3,4]
+    end
+  end
 end
