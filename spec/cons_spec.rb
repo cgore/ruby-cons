@@ -135,4 +135,39 @@ describe Cons do
       expect(Cons[1,Cons[2,Cons[3,Cons[4,nil]]]].to_a).to eq [1,2,3,4]
     end
   end
+
+  describe :== do
+    it "treats two nil conses as equal" do
+      expect(Cons[] == Cons[])
+    end
+
+    it "treats one-deep conses as equal if their cars are equal" do
+      expect(Cons[1] == Cons[1])
+    end
+
+    it "treats one-deep conses as not equal if their cars are not equal" do
+      expect(Cons[1] != Cons[2])
+    end
+
+    it "treats cons pairs as equal if their cars and cdrs are equal" do
+      expect(Cons[1,2] == Cons[1,2])
+    end
+
+    it "treats cons pairs as not equal if their cars are not equal" do
+      expect(Cons[1,2] == Cons[3,2])
+    end
+
+    it "treats cons pairs as not equal if their cdrs are not equal" do
+      expect(Cons[1,2] == Cons[1,3])
+    end
+
+    it "works for deeper lists" do
+      expect([1,2,3,4,5].to_cons == [1,2,3,4,5].to_cons)
+      expect([1,2,3,4,5].to_cons != [1,2,3,4,:nope].to_cons)
+    end
+
+    it "works for weird trees" do
+      expect(Cons[Cons[1,2],Cons[3,4]] == Cons[Cons[1,2],Cons[3,4]])
+    end
+  end
 end

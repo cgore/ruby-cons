@@ -54,6 +54,10 @@ class Cons
     @car, @cdr = car, cdr
   end
 
+  def ==(rhs)
+    rhs.kind_of? Cons and car == rhs.car and cdr == rhs.cdr
+  end
+
   def first
     car
   end
