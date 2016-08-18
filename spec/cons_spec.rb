@@ -80,6 +80,9 @@ describe Cons do
 
   describe :from_array do
     it "works with an empty array" do
+      c = Cons.from_array []
+      expect(c.car).to be_nil
+      expect(c.cdr).to be_nil
     end
 
     it "works with an array of only one item" do

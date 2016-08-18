@@ -160,12 +160,16 @@ class Cons
   end
 
   class << self
-    def from_array array
+    def from_array array, initial=true
       car, *cdr = array
       if car.nil?
-        nil
+        if initial
+          self[nil, nil]
+        else
+          nil
+        end
       else
-        self[car, from_array(cdr)]
+        self[car, from_array(cdr, false)]
       end
     end
 
