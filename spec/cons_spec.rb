@@ -35,6 +35,26 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+describe Array do
+  describe :to_cons do
+    it "works like Cons.from_array" do
+      c = [1,2,3,4,5].to_cons
+      expect(c.first).to  eq 1
+      expect(c.second).to eq 2
+      expect(c.third).to  eq 3
+      expect(c.fourth).to eq 4
+      expect(c.fifth).to  eq 5
+      expect(c.sixth).to be_nil
+    end
+  end
+
+  describe :from_cons do
+    it "works like Cons#to_a" do
+      expect(Array.from_cons Cons[1,Cons[2,Cons[3,Cons[4,nil]]]]).to eq [1,2,3,4]
+    end
+  end
+end
+
 describe Cons do
   describe :initialize do
     it "can be instantiated with no arguments" do
