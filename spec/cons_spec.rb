@@ -184,7 +184,8 @@ describe Cons do
     expect(c.ninth).to eq 9
     expect(c.tenth).to eq 10
   end
-  it "word-named places works" do
+
+  it "word-named place assignments work" do
     c = [1,2,3,4,5,6,7,8,9,10].to_cons
     c.first= 11
     c.second= 22
