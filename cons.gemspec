@@ -37,10 +37,12 @@
 
 Gem::Specification.new do |s|
   s.name = 'cons'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.date = '2016-08-18'
-  s.summary = "Teepee is a markup language for ThinkingBicycle.com."
-  s.description = "Teepee is a markup language, loosely based on Lisp and TeX, for ThinkingBicycle.com."
+  s.summary = "Lisp-style cons cells for Ruby."
+  s.description = "Lisp-style cons cells for Ruby.
+
+You can make lists ... or many other things."
   s.authors = ['Christopher Mark Gore']
   s.email = 'cgore@cgore.com'
   s.files = `git ls-files lib/`.split($/)
