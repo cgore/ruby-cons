@@ -45,4 +45,5 @@ Gem::Specification.new do |s|
   s.email = 'cgore@cgore.com'
   s.files = `git ls-files lib/`.split($/)
   s.homepage = 'https://github.com/cgore/ruby-cons'
+  s.add_development_dependency 'pry'
 end

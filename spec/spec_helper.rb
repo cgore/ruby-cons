@@ -39,4 +39,6 @@ CONS_TOPDIR = File.expand_path ".."
 CONS_LIBDIR = CONS_TOPDIR + "/lib/"
 $:.unshift CONS_LIBDIR
 
+require 'pry'
+
 require 'cons'

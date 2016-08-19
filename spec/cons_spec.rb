@@ -170,4 +170,41 @@ describe Cons do
       expect(Cons[Cons[1,2],Cons[3,4]] == Cons[Cons[1,2],Cons[3,4]])
     end
   end
+
+  it "word-named places works" do
+    c = [1,2,3,4,5,6,7,8,9,10].to_cons
+    expect(c.first).to eq 1
+    expect(c.second).to eq 2
+    expect(c.third).to eq 3
+    expect(c.fourth).to eq 4
+    expect(c.fifth).to eq 5
+    expect(c.sixth).to eq 6
+    expect(c.seventh).to eq 7
+    expect(c.eighth).to eq 8
+    expect(c.ninth).to eq 9
+    expect(c.tenth).to eq 10
+  end
+  it "word-named places works" do
+    c = [1,2,3,4,5,6,7,8,9,10].to_cons
+    c.first= 11
+    c.second= 22
+    c.third= 33
+    c.fourth= 44
+    c.fifth= 55
+    c.sixth= 66
+    c.seventh= 77
+    c.eighth= 88
+    c.ninth= 99
+    c.tenth= 1010
+    expect(c.first).to eq 11
+    expect(c.second).to eq 22
+    expect(c.third).to eq 33
+    expect(c.fourth).to eq 44
+    expect(c.fifth).to eq 55
+    expect(c.sixth).to eq 66
+    expect(c.seventh).to eq 77
+    expect(c.eighth).to eq 88
+    expect(c.ninth).to eq 99
+    expect(c.tenth).to eq 1010
+  end
 end

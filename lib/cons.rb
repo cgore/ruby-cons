@@ -58,21 +58,10 @@ class Cons
     rhs.kind_of? Cons and car == rhs.car and cdr == rhs.cdr
   end
 
-  def first
-    car
-  end
-
-  def first= thing
-    car = thing
-  end
-
-  def rest
-    cdr
-  end
-
-  def rest= thing
-    cdr = thing
-  end
+  alias first car
+  alias first= car=
+  alias rest cdr
+  alias rest= cdr=
 
   def nthcdr n
     if not n.kind_of? Integer or n < 0
@@ -97,7 +86,8 @@ class Cons
     end
   end
 
-  def nth= n, value
+  def nth_eq(n, value)
+    puts "nth= n=#{n} value=#{value}"
     i = nthcdr(n)
     if i.nil?
       raise RuntimeError
@@ -110,8 +100,8 @@ class Cons
     car
   end
 
-  def first= value
-    car= value
+  def first_eq value
+    @car = value
   end
 
   [[:second, 2],
@@ -120,7 +110,7 @@ class Cons
    [:fifth, 5],
    [:sixth, 6],
    [:seventh, 7],
-   [:eigth, 8],
+   [:eighth, 8],
    [:ninth, 9],
    [:tenth, 10]].each do |fname, i|
     class_eval %{
@@ -128,8 +118,8 @@ class Cons
         nth #{i}
       end
 
-     def #{fname}= value
-       nth= #{i}, value
+     def #{fname}=(value)
+       nth_eq(#{i}, value)
      end
     }
   end
