@@ -122,7 +122,7 @@ describe Cons do
     end
 
     it "works for really large arrays" do
-      expect { Cons.from_array (1..100_000).to_a }.to_not raise_error
+      expect { Cons.from_array (1..25_000).to_a }.to_not raise_error
     end
   end
 
@@ -211,5 +211,25 @@ describe Cons do
     expect(c.eighth).to eq 88
     expect(c.ninth).to eq 99
     expect(c.tenth).to eq 1010
+  end
+
+  describe :copy_tree do
+    it "works for a single cons" do
+      c = Cons[1,2]
+      d = c.copy_tree
+      expect(c).to eq d
+      expect(c).not_to be d
+    end
+
+    it "does a deep copy of cons trees" do
+      c = Cons[Cons[1,2],Cons[3,4]]
+      d = c.copy_tree
+      expect(c).to eq d
+      expect(c).not_to be d
+      expect(c.car).to eq d.car
+      expect(c.car).not_to be d.car
+      expect(c.cdr).to eq d.cdr
+      expect(c.cdr).not_to be d.cdr
+    end
   end
 end

@@ -176,6 +176,22 @@ class Cons
     end
   end
 
+  def copy_tree
+    new_car = if car.kind_of? Cons
+                car.copy_tree
+              else
+                car
+              end
+    new_cdr = if cdr.kind_of? Cons
+                cdr.copy_tree
+              else
+                cdr
+              end
+    Cons[new_car,new_cdr]
+  end
+
+  alias tree_copy copy_tree
+
   class << self
     def from_array array
       car, *cdr = array
