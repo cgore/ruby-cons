@@ -87,7 +87,6 @@ class Cons
   end
 
   def nth_eq(n, value)
-    puts "nth= n=#{n} value=#{value}"
     i = nthcdr(n)
     if i.nil?
       raise RuntimeError
