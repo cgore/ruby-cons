@@ -192,6 +192,39 @@ class Cons
 
   alias tree_copy copy_tree
 
+  ## Lots of TODOs from the CLHS
+  # TODO - append - http://clhs.lisp.se/Body/f_append.htm
+  # TODO - (n)butlast - http://clhs.lisp.se/Body/f_butlas.htm
+  # TODO - copy-alist - http://clhs.lisp.se/Body/f_cp_ali.htm
+  # TODO - copy-list - http://clhs.lisp.se/Body/f_cp_lis.htm
+  # TODO - endp - http://clhs.lisp.se/Body/f_endp.htm
+  # TODO - last - http://clhs.lisp.se/Body/f_last.htm
+  # TODO - ldiff, tailp - http://clhs.lisp.se/Body/f_ldiffc.htm
+  # TODO - list* - http://clhs.lisp.se/Body/f_list_.htm
+  # TODO - list-length - http://clhs.lisp.se/Body/f_list_l.htm
+  # TODO - member, member-if, member-if-not - http://clhs.lisp.se/Body/f_mem_m.htm
+  # TODO - nconc - http://clhs.lisp.se/Body/f_nconc.htm
+  # TODO - revappend, nreconc - http://clhs.lisp.se/Body/f_revapp.htm
+  # TODO - pop - http://clhs.lisp.se/Body/m_pop.htm
+  # TODO - push - http://clhs.lisp.se/Body/m_push.htm
+  # TODO - pushnew - http://clhs.lisp.se/Body/m_pshnew.htm
+  # TODO - (n)subst, (n)subst-if, (n)subst-if-not - http://clhs.lisp.se/Body/f_substc.htm
+  # TODO - (n)sublis - http://clhs.lisp.se/Body/f_sublis.htm
+
+  ## Alist stuff
+  # TODO - acons - http://clhs.lisp.se/Body/f_acons.htm
+  # TODO - assoc, assoc-if, assoc-if-not - http://clhs.lisp.se/Body/f_assocc.htm
+  # TODO - pairlis - http://clhs.lisp.se/Body/f_pairli.htm
+  # TODO - rassoc, rassoc-if, rassoc-if-not - http://clhs.lisp.se/Body/f_rassoc.htm
+
+  ## Lists as sets stuff
+  # TODO - adjoin - http://clhs.lisp.se/Body/f_adjoin.htm
+  # TODO - (n)intersection - http://clhs.lisp.se/Body/f_isec_.htm
+  # TODO - (n)set-difference - http://clhs.lisp.se/Body/f_set_di.htm
+  # TODO - (n)set-exclusive-or - http://clhs.lisp.se/Body/f_set_ex.htm
+  # TODO - (n)union - http://clhs.lisp.se/Body/f_unionc.htm
+  # TODO - subsetp - http://clhs.lisp.se/Body/f_subset.htm
+
   class << self
     def from_array array
       car, *cdr = array
