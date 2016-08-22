@@ -60,8 +60,10 @@ class Cons
 
   alias first car
   alias first= car=
+  alias rplaca car=
   alias rest cdr
   alias rest= cdr=
+  alias rplacd cdr=
 
   def nthcdr n
     if not n.kind_of? Integer or n < 0
