@@ -175,17 +175,16 @@ class Cons
   end
 
   class << self
-    def from_array array, initial=true
+    def from_array array
       car, *cdr = array
-      if car.nil?
-        if initial
-          self[nil, nil]
-        else
-          nil
-        end
-      else
-        self[car, from_array(cdr, false)]
+      result = current = Cons.new
+      while car and not car.nil?
+        current.car = car
+        current.cdr = Cons.new if cdr and not cdr.empty?
+        current = current.cdr
+        car, *cdr = cdr
       end
+      result
     end
 
     def [] car=nil, cdr=nil

@@ -120,6 +120,10 @@ describe Cons do
       expect(c.fifth).to  eq 5
       expect(c.sixth).to be_nil
     end
+
+    it "works for really large arrays" do
+      expect { Cons.from_array (1..100_000).to_a }.to_not raise_error
+    end
   end
 
   describe :to_a do
