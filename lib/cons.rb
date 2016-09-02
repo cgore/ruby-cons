@@ -58,6 +58,16 @@ class Cons
     rhs.kind_of? Cons and car == rhs.car and cdr == rhs.cdr
   end
 
+  def length
+    result = 0
+    current = self
+    while current and current.car and not current.car.nil?
+      result += 1
+      current = current.cdr
+    end
+    result
+  end
+
   alias first car
   alias first= car=
   alias rplaca car=

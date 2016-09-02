@@ -175,6 +175,20 @@ describe Cons do
     end
   end
 
+  describe :length do
+    it "returns 0 for an empty linked-list" do
+      expect(Cons[].length).to eq 0
+    end
+
+    it "works for a single item linked-list" do
+      expect(Cons["one"].length).to eq 1
+    end
+
+    it "works for a deeper linked-list" do
+      expect(Cons["one",Cons["two",Cons["three"]]].length).to eq 3
+    end
+  end
+
   it "word-named places works" do
     c = [1,2,3,4,5,6,7,8,9,10].to_cons
     expect(c.first).to eq 1
