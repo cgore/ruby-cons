@@ -256,6 +256,19 @@ class Cons
     end
   end
 
+  # The pop method reads the value of place, remembers the car of the list which
+  # was retrieved, writes the cdr of the list back into the place, and finally
+  # yields the car of the originally retrieved list.
+  #
+  # Cf. <http://clhs.lisp.se/Body/m_pop.htm>
+  def pop
+    result = @car
+    n = @cdr
+    @car = n.car
+    @cdr = n.cdr
+    return result
+  end
+
   ## Lots of TODOs from the CLHS
 
   # TODO - (n)butlast - http://clhs.lisp.se/Body/f_butlas.htm
@@ -268,7 +281,6 @@ class Cons
   # TODO - member, member-if, member-if-not - http://clhs.lisp.se/Body/f_mem_m.htm
   # TODO - nconc - http://clhs.lisp.se/Body/f_nconc.htm
   # TODO - revappend, nreconc - http://clhs.lisp.se/Body/f_revapp.htm
-  # TODO - pop - http://clhs.lisp.se/Body/m_pop.htm
   # TODO - push - http://clhs.lisp.se/Body/m_push.htm
   # TODO - pushnew - http://clhs.lisp.se/Body/m_pshnew.htm
   # TODO - (n)subst, (n)subst-if, (n)subst-if-not - http://clhs.lisp.se/Body/f_substc.htm

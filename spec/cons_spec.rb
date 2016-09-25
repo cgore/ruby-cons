@@ -268,6 +268,14 @@ describe Cons do
     end
   end
 
+  describe :pop do
+    it "works in the normal case" do
+      l = [1,2,3].to_cons
+      expect(l.pop).to eq 1
+      expect(l).to eq [2,3].to_cons
+    end
+  end
+
   describe :[] do
     it "accesses a specified nth value" do
       c = [1,2,3,4,5,6,7,8,9,10].to_cons
