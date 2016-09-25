@@ -189,6 +189,65 @@ describe Cons do
     end
   end
 
+  describe :nthcdr do
+    it "returns the nth cdr value" do
+      c = Cons[3]
+      b = Cons[2,c]
+      a = Cons[1,b]
+      expect(a.nthcdr 0).to eq a
+      expect(a.nthcdr 1).to eq b
+      expect(a.nthcdr 2).to eq c
+    end
+  end
+
+  describe :nth do
+    it "accesses a specified nth value" do
+      c = [1,2,3,4,5,6,7,8,9,10].to_cons
+      expect(c.nth 0).to eq 1
+      expect(c.nth 1).to eq 2
+      expect(c.nth 9).to eq 10
+    end
+  end
+
+  describe :nth_eq do
+    it "changes a specified nth value" do
+      c = [1,2,3,4,5,6,7,8,9,10].to_cons
+      expect(c.nth 0).to eq 1
+      expect(c.nth 1).to eq 2
+      expect(c.nth 9).to eq 10
+      c.nth_eq 0, :one
+      c.nth_eq 1, :two
+      c.nth_eq 9, :ten
+      expect(c.nth 0).to eq :one
+      expect(c.nth 1).to eq :two
+      expect(c.nth 9).to eq :ten
+    end
+  end
+
+  describe :[] do
+    it "accesses a specified nth value" do
+      c = [1,2,3,4,5,6,7,8,9,10].to_cons
+      expect(c[0]).to eq 1
+      expect(c[1]).to eq 2
+      expect(c[9]).to eq 10
+    end
+  end
+
+  describe :[]= do
+    it "changes a specified nth value" do
+      c = [1,2,3,4,5,6,7,8,9,10].to_cons
+      expect(c[0]).to eq 1
+      expect(c[1]).to eq 2
+      expect(c[9]).to eq 10
+      c[0] = :one
+      c[1] = :two
+      c[9] = :ten
+      expect(c[0]).to eq :one
+      expect(c[1]).to eq :two
+      expect(c[9]).to eq :ten
+    end
+  end
+
   it "word-named places works" do
     c = [1,2,3,4,5,6,7,8,9,10].to_cons
     expect(c.first).to eq 1

@@ -78,9 +78,9 @@ class Cons
   def nthcdr n
     if not n.kind_of? Integer or n < 0
       raise ArgumentError, "n for nthcdr must be a non-negative integer"
-    elsif n == 1
+    elsif n == 0
       self
-    elsif n > 1
+    elsif n > 0
       if cdr.nil?
         nil
       else
@@ -98,6 +98,10 @@ class Cons
     end
   end
 
+  def [] n
+    nth n
+  end
+
   def nth_eq(n, value)
     i = nthcdr(n)
     if i.nil?
@@ -105,6 +109,10 @@ class Cons
     else
       nthcdr(n).car= value
     end
+  end
+
+  def []= n, value
+    nth_eq n, value
   end
 
   def first
@@ -115,15 +123,15 @@ class Cons
     @car = value
   end
 
-  [[:second, 2],
-   [:third, 3],
-   [:fourth, 4],
-   [:fifth, 5],
-   [:sixth, 6],
-   [:seventh, 7],
-   [:eighth, 8],
-   [:ninth, 9],
-   [:tenth, 10]].each do |fname, i|
+  [[:second, 1],
+   [:third, 2],
+   [:fourth, 3],
+   [:fifth, 4],
+   [:sixth, 5],
+   [:seventh, 6],
+   [:eighth, 7],
+   [:ninth, 8],
+   [:tenth, 9]].each do |fname, i|
     class_eval %{
       def #{fname}
         nth #{i}
