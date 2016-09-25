@@ -63,7 +63,7 @@ task :gem, [:version] do |t, args|
   raise ArgumentError, "tag already exists" if git_tag_exists tag
   raise RuntimeError, "update #{GEM_NAME}.gemspec" if not version_in_gemspec version
   `gem build #{GEM_NAME}.gemspec`
-  raise RuntimeError, "failed to build gem", if not gem_was_built version
+  raise RuntimeError, "failed to build gem" if not gem_was_built version
   `gem push #{gemfile version}`
   `mv #{gemfile version} gem-builds/`
   `git add .`
