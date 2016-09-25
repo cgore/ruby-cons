@@ -269,6 +269,16 @@ class Cons
     return result
   end
 
+  # push prepends item to the list that is stored in place, stores the resulting
+  # list in place, and returns the list.
+  #
+  # Cf. <http://clhs.lisp.se/Body/m_push.htm>
+  def push value
+    @cdr = Cons[@car,@cdr]
+    @car = value
+    return self
+  end
+
   ## Lots of TODOs from the CLHS
 
   # TODO - (n)butlast - http://clhs.lisp.se/Body/f_butlas.htm
@@ -281,7 +291,6 @@ class Cons
   # TODO - member, member-if, member-if-not - http://clhs.lisp.se/Body/f_mem_m.htm
   # TODO - nconc - http://clhs.lisp.se/Body/f_nconc.htm
   # TODO - revappend, nreconc - http://clhs.lisp.se/Body/f_revapp.htm
-  # TODO - push - http://clhs.lisp.se/Body/m_push.htm
   # TODO - pushnew - http://clhs.lisp.se/Body/m_pshnew.htm
   # TODO - (n)subst, (n)subst-if, (n)subst-if-not - http://clhs.lisp.se/Body/f_substc.htm
   # TODO - (n)sublis - http://clhs.lisp.se/Body/f_sublis.htm

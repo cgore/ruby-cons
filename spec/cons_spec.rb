@@ -276,6 +276,13 @@ describe Cons do
     end
   end
 
+  describe :push do
+    it "works in the normal case" do
+      l = [1,2,3].to_cons
+      expect(l.push(0)).to eq [0,1,2,3].to_cons
+    end
+  end
+
   describe :[] do
     it "accesses a specified nth value" do
       c = [1,2,3,4,5,6,7,8,9,10].to_cons
