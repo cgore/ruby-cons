@@ -37,7 +37,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'cons'
-  s.version = '1.1.3'
+  s.version = '1.2.0'
   s.date = '2016-09-25'
   s.summary = "Lisp-style cons cells for Ruby."
   s.description = "Lisp-style cons cells for Ruby.
@@ -47,5 +47,6 @@ You can make lists ... or many other things."
   s.email = 'cgore@cgore.com'
   s.files = `git ls-files lib/`.split($/)
   s.homepage = 'https://github.com/cgore/ruby-cons'
+  s.required_ruby_version = '~> 2.3'
   s.add_development_dependency 'pry'
 end
