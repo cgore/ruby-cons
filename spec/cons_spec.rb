@@ -98,6 +98,28 @@ describe Cons do
     end
   end
 
+  describe :append do
+    it "appends to a new list" do
+      a = [1,2,3].to_cons
+      b = [4,5,6].to_cons
+      c = a.append b
+      expect(a.length).to eq 3
+      expect(b.length).to eq 3
+      expect(c.length).to eq 6
+    end
+
+    it "works with multiple lists" do
+      a = [1,2,3].to_cons
+      b = [4,5,6].to_cons
+      c = [7,8,9].to_cons
+      d = a.append(b, c)
+      expect(a.length).to eq 3
+      expect(b.length).to eq 3
+      expect(c.length).to eq 3
+      expect(d.length).to eq 9
+    end
+  end
+
   describe :from_array do
     it "works with an empty array" do
       c = Cons.from_array []

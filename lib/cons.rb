@@ -210,8 +210,39 @@ class Cons
 
   alias tree_copy copy_tree
 
+  # The last_cons method returns the last cdr that is a cons.
+  def last_cons
+    if @cdr.kind_of? Cons
+      return @cdr.last_cons
+    else
+      return self
+    end
+  end
+
+  # The append method returns a new list that is the concatenation of the
+  # copies. lists are left unchanged; the list structure of each of lists except
+  # the last is copied. The last argument is not copied; it becomes the cdr of
+  # the final dotted pair of the concatenation of the preceding lists, or is
+  # returned directly if there are no preceding non-empty lists.
+  #
+  # Cf. <http://clhs.lisp.se/Body/f_append.htm>
+  def append list, *rest
+    result = self.copy_tree
+    if rest.empty? or rest.nil?
+      if list.kind_of? Cons
+        result.last_cons.cdr = list.copy_tree
+      else
+        result.last_cons.cdr = list
+      end
+      return result
+    else
+      result.last_cons.cdr = list.copy_tree
+      return result.append *rest
+    end
+  end
+
   ## Lots of TODOs from the CLHS
-  # TODO - append - http://clhs.lisp.se/Body/f_append.htm
+
   # TODO - (n)butlast - http://clhs.lisp.se/Body/f_butlas.htm
   # TODO - copy-alist - http://clhs.lisp.se/Body/f_cp_ali.htm
   # TODO - copy-list - http://clhs.lisp.se/Body/f_cp_lis.htm
