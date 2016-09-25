@@ -76,9 +76,9 @@ class Cons
   alias rplacd cdr=
 
   def nthcdr n
-    if not n.kind_of? Integer or n < 0
-      raise ArgumentError, "n for nthcdr must be a non-negative integer"
-    elsif n == 0
+    if not n.kind_of? Integer
+      raise ArgumentError, "n for nthcdr must be an integer"
+    elsif n <= 0
       self
     elsif n > 0
       if cdr.nil?
@@ -210,12 +210,27 @@ class Cons
 
   alias tree_copy copy_tree
 
-  # The last_cons method returns the last cdr that is a cons.
-  def last_cons
+  # The the_last method returns the last cdr that is a cons.
+  def the_last
     if @cdr.kind_of? Cons
-      return @cdr.last_cons
+      return @cdr.last
     else
       return self
+    end
+  end
+
+  # last returns the last n conses (not the last n elements) of list).  If n is
+  # zero, the atom that terminates list is returned. If n is greater than or
+  # equal to the number of cons cells in list, the result is list.
+  #
+  # Cf. <http://clhs.lisp.se/Body/f_last.htm>
+  def last n=nil
+    if n.nil? or n == 1
+      return the_last
+    elsif n <= 0
+      return Cons[]
+    else
+      return nthcdr length-n
     end
   end
 
@@ -230,13 +245,13 @@ class Cons
     result = self.copy_tree
     if rest.empty? or rest.nil?
       if list.kind_of? Cons
-        result.last_cons.cdr = list.copy_tree
-      else
-        result.last_cons.cdr = list
+        result.the_last.cdr = list.copy_tree
+      else # list is not a list
+        result.the_last.cdr = list
       end
       return result
     else
-      result.last_cons.cdr = list.copy_tree
+      result.the_last.cdr = list.copy_tree
       return result.append *rest
     end
   end
@@ -247,7 +262,6 @@ class Cons
   # TODO - copy-alist - http://clhs.lisp.se/Body/f_cp_ali.htm
   # TODO - copy-list - http://clhs.lisp.se/Body/f_cp_lis.htm
   # TODO - endp - http://clhs.lisp.se/Body/f_endp.htm
-  # TODO - last - http://clhs.lisp.se/Body/f_last.htm
   # TODO - ldiff, tailp - http://clhs.lisp.se/Body/f_ldiffc.htm
   # TODO - list* - http://clhs.lisp.se/Body/f_list_.htm
   # TODO - list-length - http://clhs.lisp.se/Body/f_list_l.htm

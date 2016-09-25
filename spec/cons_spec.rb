@@ -197,6 +197,28 @@ describe Cons do
     end
   end
 
+  describe :last do
+    it "works for an empty cons" do
+      expect(Cons[].last).to eq Cons[]
+    end
+
+    it "works for a simple list" do
+      expect([1,2,3].to_cons.last).to eq Cons[3]
+    end
+
+    it "works for a dotted cons at the end" do
+      expect(Cons[1,Cons[2,Cons[3,4]]].last).to eq Cons[3,4]
+    end
+
+    it "works with numeric arguments" do
+      expect([1,2,3].to_cons.last(0)).to eq Cons[]
+      expect([1,2,3].to_cons.last(1)).to eq Cons[3]
+      expect([1,2,3].to_cons.last(2)).to eq [2,3].to_cons
+      expect([1,2,3].to_cons.last(3)).to eq [1,2,3].to_cons
+      expect([1,2,3].to_cons.last(10)).to eq [1,2,3].to_cons
+    end
+  end
+
   describe :length do
     it "returns 0 for an empty linked-list" do
       expect(Cons[].length).to eq 0
