@@ -68,6 +68,9 @@ class Cons
     result
   end
 
+  # Cf. <http://clhs.lisp.se/Body/f_list_l.htm>
+  alias list_length length
+
   alias first car
   alias first= car=
   alias rplaca car=
@@ -310,7 +313,6 @@ class Cons
   # TODO - endp - http://clhs.lisp.se/Body/f_endp.htm
   # TODO - ldiff, tailp - http://clhs.lisp.se/Body/f_ldiffc.htm
   # TODO - list* - http://clhs.lisp.se/Body/f_list_.htm
-  # TODO - list-length - http://clhs.lisp.se/Body/f_list_l.htm
   # TODO - member, member-if, member-if-not - http://clhs.lisp.se/Body/f_mem_m.htm
   # TODO - nconc - http://clhs.lisp.se/Body/f_nconc.htm
   # TODO - revappend, nreconc - http://clhs.lisp.se/Body/f_revapp.htm
