@@ -194,6 +194,31 @@ class Cons
     end
   end
 
+  # Returns a copy of list. If list is a dotted list, the resulting list will
+  # also be a dotted list.
+  #
+  # Cf. <http://clhs.lisp.se/Body/f_cp_lis.htm>
+  def copy_list
+    new_cdr = if cdr.kind_of? Cons
+                cdr.copy_list
+              else
+                cdr
+              end
+    Cons[@car,new_cdr]
+  end
+
+  alias list_copy copy_list
+
+  # Creates a copy of a tree of conses.
+  #
+  # If tree is not a cons, it is returned; otherwise, the result is a new cons
+  # of the results of calling copy-tree on the car and cdr of tree. In other
+  # words, all conses in the tree represented by tree are copied recursively,
+  # stopping only when non-conses are encountered.
+  #
+  # copy-tree does not preserve circularities and the sharing of substructure.
+  #
+  # Cf. <http://clhs.lisp.se/Body/f_cp_tre.htm>
   def copy_tree
     new_car = if car.kind_of? Cons
                 car.copy_tree
@@ -282,8 +307,6 @@ class Cons
   ## Lots of TODOs from the CLHS
 
   # TODO - (n)butlast - http://clhs.lisp.se/Body/f_butlas.htm
-  # TODO - copy-alist - http://clhs.lisp.se/Body/f_cp_ali.htm
-  # TODO - copy-list - http://clhs.lisp.se/Body/f_cp_lis.htm
   # TODO - endp - http://clhs.lisp.se/Body/f_endp.htm
   # TODO - ldiff, tailp - http://clhs.lisp.se/Body/f_ldiffc.htm
   # TODO - list* - http://clhs.lisp.se/Body/f_list_.htm
@@ -296,6 +319,7 @@ class Cons
   # TODO - (n)sublis - http://clhs.lisp.se/Body/f_sublis.htm
 
   ## Alist stuff
+  # TODO - copy-alist - http://clhs.lisp.se/Body/f_cp_ali.htm
   # TODO - acons - http://clhs.lisp.se/Body/f_acons.htm
   # TODO - assoc, assoc-if, assoc-if-not - http://clhs.lisp.se/Body/f_assocc.htm
   # TODO - pairlis - http://clhs.lisp.se/Body/f_pairli.htm

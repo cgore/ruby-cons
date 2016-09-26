@@ -364,4 +364,20 @@ describe Cons do
       expect(c.cdr).not_to be d.cdr
     end
   end
+
+  describe :copy_list do
+    it "works for a single cons" do
+      c = Cons[1]
+      d = c.copy_list
+      expect(c).to eq d
+      expect(c).not_to be d
+    end
+
+    it "does a deep list copy of cons lists" do
+      c = [1,2,3].to_cons
+      d = c.copy_list
+      expect(c).to eq d
+      expect(c).not_to be d
+    end
+  end
 end
