@@ -37,7 +37,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'cons'
-  s.version = '1.2.0'
+  s.version = '1.2.1'
   s.date = '2016-09-25'
   s.summary = "Lisp-style cons cells for Ruby."
   s.description = "Lisp-style cons cells for Ruby.
