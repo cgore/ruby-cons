@@ -35,6 +35,15 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+class NilClass
+  # http://clhs.lisp.se/Body/f_endp.htm
+  def end?
+    true
+  end
+
+  alias endp end?
+end
+
 class Array
   def to_cons
     Cons.from_array self
@@ -104,6 +113,13 @@ class Cons
   def [] n
     nth n
   end
+
+  # http://clhs.lisp.se/Body/f_endp.htm
+  def end?
+    @car.nil? and @cdr.nil?
+  end
+
+  alias endp end?
 
   def nth_eq(n, value)
     i = nthcdr(n)
@@ -310,7 +326,6 @@ class Cons
   ## Lots of TODOs from the CLHS
 
   # TODO - (n)butlast - http://clhs.lisp.se/Body/f_butlas.htm
-  # TODO - endp - http://clhs.lisp.se/Body/f_endp.htm
   # TODO - ldiff, tailp - http://clhs.lisp.se/Body/f_ldiffc.htm
   # TODO - list* - http://clhs.lisp.se/Body/f_list_.htm
   # TODO - member, member-if, member-if-not - http://clhs.lisp.se/Body/f_mem_m.htm
