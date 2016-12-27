@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
 
 You can make lists ... or many other things."
   s.authors = ['Christopher Mark Gore']
+  s.license = 'BSD-3-Clause' # https://github.com/cgore/ruby-teepee/blob/master/LICENSE
   s.email = 'cgore@cgore.com'
   s.files = `git ls-files lib/`.split($/)
   s.homepage = 'https://github.com/cgore/ruby-cons'
